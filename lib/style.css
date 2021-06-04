@@ -1,0 +1,6 @@
+.img-cover{
+    object-fit: cover;
+  }
+  .brand-logo{
+    max-height:60px;
+  }
