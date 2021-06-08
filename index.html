@@ -65,12 +65,54 @@
               <h1 class="mt-6 mb-sm-4 display-4 fw-semi-bold lh-sm fs-4 fs-lg-6 fs-xxl-7">Learn Vedic Maths <br class="d-block d-lg-none d-xl-block" />Fast &amp; Fun</h1>
               <p class="mb-4 fs-1">Join our <b>free</b> Sunday Zoom Class - Contact Now </p>
               <div class="pt-3">
-                <form>
-                  <div class="input-group w-xl-75 w-xxl-50 d-flex flex-center">
-                    <!-- <input class="form-control rounded-pill border-0 font-base" id="formGroupExampleInput" type="text" placeholder="Search books, articles, keywords" /><img class="input-box-icon me-3" src="assets/img/illustrations/search.png" width="18" alt="" /> -->
-                    <a href="./vedicmaths.html" class="btn btn-lg btn-primary rounded-pill bg-gradient font-base order-0">Learn More</a>
+
+                <!-- Contact Us Form toast -->
+                <div class="toast card mx-auto" hidden="hidden">
+                  <div class="toast-header card-header text-black text-center">
+                    <h1 class="mx-auto">Message Sent !</h1>
                   </div>
+                  <div class="toast-body card-body">
+                    We will contact you soon.
+                  </div>
+                </div>
+                <!-- Contact Us Form -->
+                <form id="maincontactform" onsubmit="return false;">
+                  <div class="input-group w-xl-75 w-xxl-50 d-flex flex-end-center">
+                    <input class="form-control rounded-pill border-0 font-base" id="name" name="fullname" type="text" required placeholder="Your Name" />
+                    <span class="input-box-icon me-3" width="18">
+                      <svg id="i-user" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="18" height="18" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                          <path d="M22 11 C22 16 19 20 16 20 13 20 10 16 10 11 10 6 12 3 16 3 20 3 22 6 22 11 Z M4 30 L28 30 C28 21 22 20 16 20 10 20 4 21 4 30 Z" />
+                      </svg>
+                    </span>
+                  </div>
+                  <div class="input-group w-xl-75 w-xxl-50 d-flex flex-end-center">
+                    <input class="form-control rounded-pill border-0 font-base" id="phone" name="phone" type="tel" required placeholder="Phone Number" />
+                    <span class="input-box-icon me-3" width="18">
+                      <svg id="i-mobile" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="18" height="18" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                          <path d="M21 2 L11 2 C10 2 9 3 9 4 L9 28 C9 29 10 30 11 30 L21 30 C22 30 23 29 23 28 L23 4 C23 3 22 2 21 2 Z M9 5 L23 5 M9 27 L23 27" />
+                      </svg>
+                    </span>
+                  </div>
+                  <div class="input-group w-xl-75 w-xxl-50 d-flex flex-end-center">
+                    <input class="form-control rounded-pill border-0 font-base" id="email" name="email" type="email" placeholder="Email" />
+                    <span class="input-box-icon me-3" width="18">
+                      <svg id="i-mail" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="18" height="18" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                          <path d="M2 26 L30 26 30 6 2 6 Z M2 6 L16 16 30 6" />
+                      </svg>
+                    </span>
+                  </div>
+                  <div class="input-group w-xl-75 w-xxl-50 d-flex flex-end-center">
+                    <input class="form-control rounded-pill border-0 font-base" id="class" name="class" type="text" placeholder="Class / Course" />
+                    <span class="input-box-icon me-3" width="18">
+                      <svg id="i-book" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="18" height="18" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                          <path d="M16 7 C16 7 9 1 2 6 L2 28 C9 23 16 28 16 28 16 28 23 23 30 28 L30 6 C23 1 16 7 16 7 Z M16 7 L16 28" />
+                      </svg>
+                    </span>
+                  </div>
+                  <br>
+                  <button onclick="contactform(event);" id="contactformBtn" class="btn btn-lg btn-primary rounded-pill bg-gradient font-base order-0">Get free consultation</button>
                 </form>
+
               </div>
             </div>
           </div>
@@ -605,6 +647,43 @@
     <!-- ===============================================-->
     <!--    JavaScripts-->
     <!-- ===============================================-->
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      function contactform(event){
+        event.preventDefault();
+        $("#contactformBtn").attr('disabled','disabled');
+        let originalText=$("#contactformBtn").text();
+        if(originalText=='Sending ...')return false;
+        $("#contactformBtn").text('Sending ...');
+
+        sendMessage=`
+        Full Name: `+$("#name").val()+` <br />
+        Phone: `+$("#phone").val()+` <br />
+        Email: `+$("#email").val()+` <br />
+        Class: `+$("#class").val()+` <br />
+        `;
+        appTitle="TSP";
+        downloadLink="https://play.google.com/store/apps/details?id=co.april2019.tsp";
+        downloadImage="https://tspeducation.com/assets/img/gallery/google-play.png";
+        var mailHeader=`<div style="border-radius:5px;"><div style="background-color: #c51d23;padding:5px;margin:0px;"><h1 style="color:white;margin-left:10px;margin-right:10px;">`+appTitle+`<small style="float:right;">Jodhpur</small></h1></div><center style="margin:0px;background-color: white;border:5px solid #ccc;color:black;padding:30px;">`;
+        var mailFooter=`<p><a href="`+downloadLink+`"><img style="max-width:150px;" src="`+downloadImage+`" /></a></p></center></div>`;
+        $.get("https://brithiaus.com/api/mail/message.php?email="+encodeURIComponent("divyavrat@gmail.com")
+        +"&subject="+encodeURIComponent("Contact Form received")
+        +"&htmlcode="+encodeURIComponent(mailHeader+sendMessage+mailFooter)
+        ,function(){
+          $("#contactformBtn").text(originalText);
+          $("#contactformBtn").attr('disabled',false);
+          $('.toast').attr('hidden',false);
+          $('.toast').toast('show');
+        });
+        return false;
+      }
+      $('.toast').on('hidden.bs.toast', function () {
+        $('.toast').attr('hidden','hidden');
+      })
+    </script>
+
     <script src="vendors/@popperjs/popper.min.js"></script>
     <script src="vendors/bootstrap/bootstrap.min.js"></script>
     <script src="vendors/is/is.min.js"></script>
